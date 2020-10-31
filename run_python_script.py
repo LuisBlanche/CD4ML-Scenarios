@@ -27,7 +27,8 @@ def run_python_script(script_name, *args, **kwargs):
     elif script_name == "acceptance":
         from scripts import acceptance as executable_script
     else:
-        message = "Error, script_name ({}) must be one of {}".format(script_name, script_names)
+        message = "Error, script_name ({}) must be one of {}".format(
+            script_name, script_names)
         raise ValueError(message)
 
     if profiler:
@@ -47,4 +48,5 @@ if __name__ == "__main__":
     arguments = sys.argv[2:]
     # remove the profile flag now that profiler is on
     arguments = [i for i in arguments if i != '-p']
+    logging.info(str(arguments))
     run_python_script(script, arguments, profiler=profiler)
